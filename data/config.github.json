@@ -1,18 +1,18 @@
 {
   "ai": {
     "provider": "deepseek",
-    "model": "deepseek-v4-flash",
+    "model": "deepseek-flash",
     "base_url": "https://api.deepseek.com",
     "api_key_env": "DEEPSEEK_API_KEY",
     "temperature": 0.3,
-    "max_tokens": 8192,
-    "throttle_sec": 1,
+    "max_tokens": 4096,
+    "throttle_sec": 0,
     "languages": [
       "zh",
       "en"
     ],
-    "analysis_concurrency": 5,
-    "enrichment_concurrency": 5
+    "analysis_concurrency": 10,
+    "enrichment_concurrency": 10
   },
   "processing": {
     "profiles_dir": "profiles",
@@ -35,37 +35,17 @@
   "sources": {
     "github": [
       {
-        "type": "user_events",
-        "username": "karpathy",
-        "enabled": true,
-        "profile": "tech-news"
-      },
-      {
         "type": "repo_releases",
         "owner": "vllm-project",
         "repo": "vllm",
-        "enabled": true,
-        "profile": "tech-news"
-      },
-      {
-        "type": "repo_releases",
-        "owner": "sgl-project",
-        "repo": "sglang",
-        "enabled": true,
-        "profile": "tech-news"
-      },
-      {
-        "type": "repo_releases",
-        "owner": "triton-lang",
-        "repo": "triton",
         "enabled": true,
         "profile": "tech-news"
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 30,
-      "min_score": 150,
+      "fetch_top_stories": 15,
+      "min_score": 200,
       "profile": "tech-news"
     },
     "rss": [
@@ -117,7 +97,7 @@
       {
         "name": "LWN.net",
         "url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
-        "enabled": true,
+        "enabled": false,
         "category": "linux-kernel",
         "profile": "tech-news"
       }
@@ -130,25 +110,16 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 10,
-          "min_score": 60,
-          "profile": "tech-news"
-        },
-        {
-          "subreddit": "LocalLLaMA",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 10,
-          "min_score": 60,
+          "fetch_limit": 5,
+          "min_score": 100,
           "profile": "tech-news"
         }
       ],
       "users": [],
-      "fetch_comments": 10
+      "fetch_comments": 5
     },
     "telegram": {
-      "enabled": true,
+      "enabled": false,
       "channels": [
         {
           "channel": "zaihuapd",
